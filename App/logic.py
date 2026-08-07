@@ -135,6 +135,14 @@ def load_books_tags(catalog, filename):
     :returns: Tamaño del conjunto de tags de los libros
     :rtype: int
     """
+    
+    book_tags = catalog["book_tags"]
+    tagsfile = os.path.join(data_dir, filename)
+    catalog["book_tags"] = set.load_set(book_tags, tagsfile)
+    if empty_book_tags(catalog):
+        return 0
+    else:
+        return book_tag_size(catalog)
     # TODO: Mods Lab 1, integrar vista y logica
     # Implemente una función que cargue los tags de los libros en el catalogo.
     # La función debe recibir el catalogo y el nombre del archivo csv con los tags de los libros.
