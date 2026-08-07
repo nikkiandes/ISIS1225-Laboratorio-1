@@ -148,7 +148,7 @@ def load_books_tags(catalog, filename):
     # La función debe recibir el catalogo y el nombre del archivo csv con los tags de los libros.
     # La función debe cargar los tags de los libros del archivo y los agregar al conjunto book_tags del catalogo.
     # La función debe retornar el tamaño del conjunto de tags de los libros.
-    pass
+    
 
 # Funciones de consulta
 
