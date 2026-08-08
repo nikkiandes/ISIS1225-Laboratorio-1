@@ -116,10 +116,10 @@ def load_tags(catalog, filename):
     tagsfile = os.path.join(data_dir, filename)
     catalog["tags"] = set.load_set(tags, tagsfile)
 
-    if set.is_empty(tags):
+    if set.is_empty(catalog["tags"]):
         return 0
     else:
-        return set.size(tags)
+        return set.size(catalog["tags"])
 
 
 def load_books_tags(catalog, filename):
@@ -136,19 +136,22 @@ def load_books_tags(catalog, filename):
     :rtype: int
     """
     
-    
-    book_tags = catalog.get("Book_tags")
-    book_tags_file = os.path.join(data_dir, filename)
-    catalog["Book_tags"] = set.load_set(book_tags, book_tags_file)
-    if book_tags is None:
-        return None
-    else:
-        return set.size(catalog.get("Book_tags"))
     # TODO: Mods Lab 1, integrar vista y logica
     # Implemente una función que cargue los tags de los libros en el catalogo.
     # La función debe recibir el catalogo y el nombre del archivo csv con los tags de los libros.
     # La función debe cargar los tags de los libros del archivo y los agregar al conjunto book_tags del catalogo.
     # La función debe retornar el tamaño del conjunto de tags de los libros.
+    
+
+    book_tags = catalog["book_tags"]
+    book_tags_file = os.path.join(data_dir, filename)
+
+    catalog["book_tags"] = set.load_set(book_tags, book_tags_file)
+
+    if set.is_empty(catalog["book_tags"]):
+        return 0
+    else:
+        return set.size(catalog["book_tags"])
     
 
 # Funciones de consulta
@@ -164,7 +167,7 @@ def book_size(catalog):
     :returns: Tamaño del conjunto de libros
     :rtype: int
     """
-    books_size = catalog["book"]
+    
     return set.size(catalog["books"])
 
 
